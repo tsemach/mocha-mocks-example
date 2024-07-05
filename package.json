@@ -1,0 +1,49 @@
+{
+  "name": "mocha-mocks-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npx tsc --sourcemap --declaration",
+    "build:watch": "npx tsc --sourcemap --declaration -w",
+    "start": "node dist/src/index.js",
+    "start:local": "ts-node src/index.ts",
+    "start:debug": "nodemon --watch local.env --watch 'src/**/*' -e ts --exec \"node --max-old-space-size=6000 -r source-map-support/register -r ts-node/register --inspect src/index.ts || (sleep 1; touch  src/index.ts)\"",
+    "test": "./node_modules/.bin/mocha -r ts-node/register tests/**/*.test.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "config": {
+    "mongodbMemoryServer": {
+      "debug": "0",
+      "MONGOMS_DOWNLOAD_URL": "https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-rhel90-6.0.7.tgz",
+      "MONGOMS_VERSION": "6.0.7"
+    }
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.9",
+    "@types/express": "^4.17.21",
+    "@types/mocha": "^10.0.7",
+    "@types/mongoose": "^5.11.97",
+    "@types/node": "^20.14.9",
+    "@types/supertest": "^6.0.2",
+    "chai": "^4.3.10",
+    "mocha": "^10.6.0",
+    "mongodb-memory-server": "^9.4.0",
+    "nodemon": "^3.1.4",
+    "supertest": "^7.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
+  },
+  "dependencies": {
+    "@tsemach/logger": "^0.0.3",
+    "express": "^4.19.2",
+    "mongoose": "^8.4.4",
+    "nock": "^13.5.4",
+    "pactum": "^3.7.0",
+    "reflect-metadata": "^0.2.2",
+    "source-map-support": "^0.5.21",
+    "zod": "^3.23.8"
+  }
+}

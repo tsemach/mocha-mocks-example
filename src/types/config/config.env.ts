@@ -1,0 +1,1 @@
+export type ConfigENV = 'local' | 'dev' | 'stage' | 'prod'

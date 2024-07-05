@@ -1,0 +1,43 @@
+{
+    "id": "000000000000000000000001",
+    "kind": "Squadron",
+    "name": "squadron-abondb",
+    "created_at": "2024-06-24T07:12:34.952Z",
+    "updated_at": "2024-06-24T07:12:34.952Z",
+    "labels": {
+      "version": "v1",
+      "phpVersion": "7.4"
+    },
+    "spec": {
+      "limits": {
+        "quantity": {
+          "capacity": 500,
+          "reserve": 0.1,
+          "weight": 1
+        }
+      },
+      "template": {},
+      "resources": {
+        "Cluster": {
+          "labels": {
+            "version": "v1"
+          },
+          "requests": {
+            "quantity": 1
+          },
+          "selected": "customers-20b8bg"
+        }
+      }
+    },
+    "status": {
+      "conditions": {
+        "initializing": {
+          "reason": "pending",
+          "status": true
+        }
+      },
+      "utilization": {
+        "limits": {}
+      }
+    }
+}
