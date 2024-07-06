@@ -6,6 +6,7 @@ const logger = Logger.get("database");
 export class Database {
     public static _instance: Database;
     private refCount = 0;
+    private _enable = true;
 
     private constructor() {}
 
@@ -14,6 +15,12 @@ export class Database {
     }
 
     async connect() {
+      if ( ! this._enable ) {
+        logger.info('database is disable, abort')
+
+        return
+      }
+
       console.log("DATABASE CONNECT: refCount", this.refCount);
       this.refCount++;
       if (this.refCount > 1) {
@@ -42,11 +49,26 @@ export class Database {
       }
     }
 
+    enable() {
+      this._enable = true
+    }
+
     async close() {
+      if ( ! this._enable ) {
+        logger.info('database is disable, abort')
+
+        return
+      }
+
       console.log("DATABASE CLOSE: refCount", this.refCount);
       this.refCount--;
       if (this.refCount === 0) {
         await mongoose.connection.close();
       }
     }
+
+    disable() {
+      this._enable = false
+    }
+
 }
